@@ -67,35 +67,35 @@ def Query(update:Update,context:CallbackContext):
 		
 
 		
-#########Document_id###########
+
 def Document_app(update:Update,context:CallbackContext):
 	context.bot.sendMessage(chat_id=update.effective_chat.id,text=f"'id :\n{update.effective_message.document.file_id}'")
 	
-#########Video_id###############
+
 def Video_app(update:Update,context:CallbackContext):
 	context.bot.sendMessage(chat_id=update.effective_chat.id,text=f"'id :\n{update.effective_message.video.file_id}'")
 
 
 
-def main():
-	updater = Updater('5011582345:AAHMjJHyPqUz_OiW90v6TfkmP5Qh1jEfy3Y')
-	dispatsher = updater.dispatcher
+
+updater = Updater('5011582345:AAHMjJHyPqUz_OiW90v6TfkmP5Qh1jEfy3Y')
+dispatsher = updater.dispatcher
 	##############################
 		
-	dispatsher.add_handler(CommandHandler('start',start))
+dispatsher.add_handler(CommandHandler('start',start))
 	
-	dispatsher.add_handler(MessageHandler(Filters.document,Document_app))
-	dispatsher.add_handler(MessageHandler(Filters.video,Video_app))
+dispatsher.add_handler(MessageHandler(Filters.document,Document_app))
+dispatsher.add_handler(MessageHandler(Filters.video,Video_app))
 	
-	dispatsher.add_handler(CallbackQueryHandler(Query))
+dispatsher.add_handler(CallbackQueryHandler(Query))
 		
 ##############################
 	
-	updater.start_webhook('0.0.0.0',PORT,TOKEN,webhook_url='https://telegramtest606.herokuapp.com/'+TOKEN)
+updater.start_webhook('0.0.0.0',PORT,TOKEN,webhook_url='https://telegramtest606.herokuapp.com/'+TOKEN)
 
-	updater.idle()
+updater.idle()
 	
 ##############################
-if __name__=='__main__':
-	main()
+
+
 	
